@@ -1,0 +1,26 @@
+.button {
+  width: 344px;
+  height: 69px;
+  padding: 20px;
+  text-align: center;
+  background-color: #E6B8E6;
+  color: #8B5F8D;
+  text-decoration: none;
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.5em;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: #F8D7F8;
+}
+
+.button.order-button {
+  background-color: #F6D7F8;
+}
+
+.button.order-button:hover {
+  background-color: #E6B8E6;
+}

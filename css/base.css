@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FFF5F5;
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: -1px;
+  color: #8B5F8D;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

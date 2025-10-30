@@ -1,0 +1,163 @@
+.simple-logo {
+  width: 50px;
+  height: 70px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Ладонь */
+.simple-logo::before {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 35px;
+  background: #f8d7c9;
+  border-radius: 15px 15px 10px 10px;
+  top: 25px;
+  left: 12px;
+  z-index: 1;
+}
+
+/* Большой палец */
+.simple-logo::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 28px;
+  background: #f8d7c9;
+  border-radius: 4px;
+  top: 28px;
+  left: 4px;
+  transform: rotate(-35deg);
+  z-index: 2;
+}
+
+/* Лак для большого пальца */
+.simple-logo .thumb-polish {
+  position: absolute;
+  width: 7px;
+  height: 5px;
+  background: #ff0090;
+  border-radius: 2px 2px 3px 3px;
+  top: 32px;
+  left: -1px; 
+  transform: rotate(-35deg);
+  z-index: 3;
+}
+
+/* Указательный палец */
+.finger-index::before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 35px;
+  background: #f8d7c9;
+  border-radius: 4px;
+  top: 10px;
+  left: 12px;
+  z-index: 2;
+}
+
+/* Лак для указательного пальца */
+.finger-index::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #ff0090;
+  border-radius: 2px 2px 3px 3px;
+  top: 11px;
+  left: 12.5px;
+  z-index: 3;
+}
+
+/* Средний палец */
+.finger-middle::before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 38px;
+  background: #f8d7c9;
+  border-radius: 4px;
+  top: 8px;
+  left: 20px;
+  z-index: 2;
+}
+
+/* Лак для среднего пальца */
+.finger-middle::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #ff0090;
+  border-radius: 2px 2px 3px 3px;
+  top: 9px;
+  left: 20.5px;
+  z-index: 3;
+}
+
+/* Безымянный палец */
+.finger-ring::before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 34px;
+  background: #f8d7c9;
+  border-radius: 4px;
+  top: 12px;
+  left: 28px;
+  z-index: 2;
+}
+
+/* Лак для безымянного пальца */
+.finger-ring::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #ff0090;
+  border-radius: 2px 2px 3px 3px;
+  top: 13px;
+  left: 28.5px;
+  z-index: 3;
+}
+
+/* Мизинец */
+.finger-pinky::before {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 30px;
+  background: #f8d7c9;
+  border-radius: 4px;
+  top: 16px;
+  left: 35px;
+  transform: rotate(6deg);
+  z-index: 2;
+}
+
+/* Лак для мизинца */
+.finger-pinky::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #ff0090;
+  border-radius: 2px 2px 3px 3px;
+  top: 17px;
+  left: 35.5px;
+  transform: rotate(6deg);
+  z-index: 3;
+}
+
+/* Базовые стили */
+.finger-index,
+.finger-middle,
+.finger-ring,
+.finger-pinky {
+  position: absolute;
+  width: 0;
+  height: 0;
+}

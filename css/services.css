@@ -1,0 +1,120 @@
+.beauty-filter {
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.beauty-filter ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+}
+
+.beauty-filter ul li {
+  width: 127px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #8B5F8D;
+  font-size: 1em;
+  color: #8B5F8D;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.beauty-filter ul li.active,
+.beauty-filter ul li:hover {
+  color: #e42886;
+  border-color: #e42886;
+}
+
+.beauty-services {
+  background-color: #F8D7F8;
+  padding: 50px 0;
+}
+
+.beauty-services h2 {
+  font-size: 4.0625em;
+  font-weight: normal;
+  text-align: center;
+}
+
+.beauty-content {
+  display: flex;
+  padding-top: 60px;
+  gap: 77px;
+}
+
+.beauty-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.beauty-service {
+  background-color: #FFF5F5;
+  padding: 20px;
+  display: flex;
+  gap: 24px;
+  border-radius: 10px;
+}
+
+.beauty-service img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.beauty-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.beauty-details h4 {
+  font-size: 1.875em;
+  line-height: 1.2;
+}
+
+.beauty-details p {
+  font-size: 1.2em;
+  line-height: 1.4;
+  color: #B28FB2;
+  flex: 1;
+}
+
+.beauty-action {
+  margin-top: auto;
+  width: 100%;
+}
+
+.beauty-action ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.beauty-price {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.beauty-action .button {
+  width: 100%;
+  max-width: none;
+}
+
+.beauty-price::before {
+  content: "💖 ";
+}
+
+.beauty-price::after {
+  content: " 💖";
+}
