@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFF5F5;
+    font-family: 'Helvetica', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 50px;
+}
+
+.animation-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #e0e0e0;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.container {
+    text-align: center;
+}
+
+.container a {
+    color: #8B5F8D; 
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: 2px solid #8B5F8D;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background-color: #FFF5F5;
+}
+
+.container a:hover {
+    background-color: #E6B8E6; 
+    color: #8B5F8D;
+    text-decoration: none;
+    border-color: #E6B8E6;
+}
+
+.body {
+    position: absolute;
+    bottom: 5px;
+    right: 2px;
+    z-index: 3;
+    width: 145px;
+    height: 180px;
+}
+
+.head-normal {
+    position: absolute;
+    bottom: 5px;
+    right: -7px;
+    z-index: 4;
+    width: 160px;
+    height: 170px;
+    opacity: 1;
+}
+
+.head-surprised {
+    position: absolute;
+    bottom: 5px;
+    right: -7px;
+    z-index: 4;
+    width: 157px;
+    height: 167px;
+    opacity: 0;
+    transform-origin: bottom center;
+}
+
+.tape-recorder {
+    position: absolute;
+    bottom: 5px;
+    left: 7%;
+    z-index: 1;
+    width: 57.5px;
+    height: 64.5px;
+}
+
+.reels1 {
+    position: absolute;
+    bottom: 40px;
+    left: 2%;
+    z-index: 2;
+    width: 36px;
+    height: 35px;
+}
+
+.reels2 {
+    position: absolute;
+    bottom: 40px;
+    left: 20%;
+    z-index: 2;
+    width: 36px;
+    height: 35px;
+}
+
+.surprise-text {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: bold;
+    color: #1100fb;
+    z-index: 5;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.playing-text {
+    position: absolute;
+    bottom: 110px;
+    left: 30%;
+    transform: translateX(-50%) rotate(-35deg);
+    font-size: 16px;
+    font-weight: bold;
+    color: #1100fb;
+    z-index: 5;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #0800ff;
+    border-radius: 50%;
+    z-index: 6;
+    opacity: 0;
+    offset-path: path('M 30,30 C 30,10 70,10 70,30 C 70,50 30,50 30,30 C 30,10 0,10 0,30 C 0,50 30,50 30,30');
+    offset-distance: 0%;
+    bottom: 70px;
+    left: 11px;
+}
+
+@keyframes headShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
+}
+
+@keyframes spinReels {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.animation-container:hover .head-normal {
+    opacity: 0;
+}
+
+.animation-container:hover .head-surprised {
+    opacity: 1; 
+    animation: headShake 0.5s infinite;
+}
+
+.animation-container:hover .surprise-text {
+    opacity: 1;
+}
+
+.tape-recorder:hover ~ .reels1,
+.tape-recorder:hover ~ .reels2 {
+    animation: spinReels 1s linear infinite;
+}
+
+.animation-container:active .surprise-text {
+    opacity: 0;
+}
+
+.animation-container:active .playing-text {
+    opacity: 1;
+}
+
+@keyframes moveAlongPath {
+    0% {
+        offset-distance: 0%;
+    }
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+.animation-container:active .circle {
+    opacity: 1;
+    animation: moveAlongPath 3s linear infinite;
+}
+
+.animation-container:active .head-normal {
+    opacity: 0;
+}
+
+.animation-container:active .head-surprised {
+    opacity: 1;
+    animation: none !important;
+}
+
+.animation-container.active {
+    animation: scaleContainer 3s infinite alternate;
+    transform-origin: center;
+}
+
+@keyframes scaleContainer {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.animation-container.active .surprise-text {
+    opacity: 0 !important;
+}
+
+.animation-container.active .head-normal {
+    opacity: 1;
+}
+
+.animation-container.active .head-surprised {
+    opacity: 0 !important;
+}

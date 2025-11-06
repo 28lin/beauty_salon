@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФлексБокс</title>
+    <link rel="stylesheet" href="flexbox.css">
+</head>
+<body>
+    <div class="animation-container">
+        <div class="surprise-text">что-то новенькое</div>
+        <div class="playing-text">ура! играет!</div>
+        <div class="circle"></div>
+
+        <img src="body.png" alt="Тело зайца" class="body">
+        <img src="head-normal.png" alt="Нормальная голова" class="head-normal">
+        <img src="head-surprised.png" alt="Удивленная голова" class="head-surprised">
+
+        <img src="tape-recorder.png" alt="Магнитофон" class="tape-recorder">
+        <img src="reels.png" alt="Катушка 1" class="reels1">
+        <img src="reels.png" alt="Катушка 2" class="reels2">
+    </div>
+
+    <div class="container">
+        <p><a href="../index.html">Вернуться на главную</a></p>
+    </div>
+    
+    <script>
+        document.querySelector('.animation-container').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
