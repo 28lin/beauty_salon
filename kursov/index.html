@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра "Координация по времени"</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="bulbs-game.css">
+    <link rel="stylesheet" href="mouse-game.css">
+    <link rel="stylesheet" href="frog-game.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="registration-screen" id="registrationScreen">
+            <h1>Координация по времени</h1>
+            <div class="registration-form">
+                <h2>Введите ваше имя</h2>
+                <input type="text" id="playerName" placeholder="Ваше имя" maxlength="20">
+                <button id="startGameBtn">Начать игру</button>
+            </div>
+        </div>
+
+        <div class="game-selection-screen" id="gameSelectionScreen" style="display: none;">
+            <h1>Выберите игру</h1>
+            <div class="game-selection">
+                <div class="game-option" data-game="1">
+                    <h2>1 раунд</h2>
+                    <p>Игра "Повтори ритм лампочек"</p>
+                    <div class="game-preview">💡</div>
+                </div>
+                <div class="game-option" data-game="2">
+                    <h2>2 раунд</h2>
+                    <p>Игра "Мышка и норка"</p>
+                    <div class="game-preview">🐭</div>
+                </div>
+                <div class="game-option" data-game="3">
+                    <h2>3 раунд</h2>
+                    <p>Игра "Лягушка и кувшинка"</p>
+                    <div class="game-preview">🐸</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-screen" id="gameScreen" style="display: none;">
+            <div class="header">
+                <h1>Повтори ритм лампочек</h1>
+            </div>
+            
+            <div class="header-buttons">
+                <div class="player-info">Игрок: <span id="currentPlayerName">-</span></div>
+                <button id="backToSelectionBtn" class="back-btn">Выбор игры</button>
+                <button id="newGameHeaderBtn" class="new-game-btn">Смена пользователя</button>
+                <button id="showLeadersBtn">Таблица лидеров</button>
+            </div>
+            
+            <div class="level-info">
+                <div class="level-info-item">
+                    Уровень: 
+                    <select id="levelSelect">
+                        <option value="1">Уровень 1</option>
+                        <option value="2">Уровень 2</option>
+                        <option value="3">Уровень 3</option>
+                        <option value="4">Уровень 4</option>
+                        <option value="5">Уровень 5</option>
+                    </select>
+                </div>
+                <div class="level-info-item">Очки: <span id="currentScore">0</span></div>
+                <div class="level-info-item">
+                    Сложность: 
+                    <select id="difficultySelect">
+                        <option value="easy">Легкая (1 сек)</option>
+                        <option value="medium">Средняя (0.5 сек)</option>
+                        <option value="hard">Сложная (0.2 сек)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="game-description">
+                <p id="levelDescription">Следите за лампочками и повторите их ритм!</p>
+            </div>
+            
+            <div class="bulbs-container" id="bulbsContainer">
+                <!-- динамическое добавление лампочек -->
+            </div>
+            
+            <div class="timer" id="timer">Нажмите "Начать уровень"</div>
+            
+            <div class="controls">
+                <button id="startBtn">Начать уровень</button>
+            </div>
+            
+            <div class="result" id="result">
+                <h2 id="resultTitle">Результат уровня</h2>
+                <p id="resultMessage"></p>
+                <div id="intervalsInfo"></div>
+                <div class="result-buttons">
+                    <button id="nextLevelBtn">Следующий уровень</button>
+                    <button id="restartBtn">Повторить уровень</button>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <p>Нажмите "Начать уровень", чтобы начать. После демонстрации лампочек, повторите их последовательность и интервалы.</p>
+            </div>
+        </div>
+
+        <div class="game-screen-2" id="gameScreen2" style="display: none;">
+            <div class="header">
+                <h1>Мышка и норка</h1>
+            </div>
+            
+            <div class="header-buttons">
+                <div class="player-info">Игрок: <span id="currentPlayerName2">-</span></div>
+                <button id="backToSelectionBtn2" class="back-btn">Выбор игры</button>
+                <button id="newGameHeaderBtn2" class="new-game-btn">Смена пользователя</button>
+                <button id="showLeadersBtn2">Таблица лидеров</button>
+            </div>
+            
+            <div class="level-info-2">
+                <div class="level-info-item">
+                    Целевое время: <span id="targetTime">0</span> сек
+                </div>
+                <div class="level-info-item">
+                    Прошедшее время: <span id="elapsedTime">0.0</span> сек
+                </div>
+                <div class="level-info-item">
+                    Очки: <span id="currentScore2">0</span>
+                </div>
+            </div>
+            
+            <div class="game-description-2">
+                <p>Проведите мышку по тропинке до норки ровно за целевое время!</p>
+            </div>
+            
+            <div class="mouse-game-container">
+                <canvas id="gameCanvas" width="800" height="400"></canvas>
+            </div>
+            
+            <div class="timer-2" id="timer2">Нажмите "Начать игру"</div>
+            
+            <div class="controls-2">
+                <button id="startGameBtn2">Начать игру</button>
+                <button id="restartGameBtn2" style="display: none;">Начать заново</button>
+            </div>
+            
+            <div class="result-2" id="result2">
+                <h2 id="resultTitle2">Результат</h2>
+                <p id="resultMessage2"></p>
+                <div class="result-buttons">
+                    <button id="nextRoundBtn2">Следующий раунд</button>
+                    <button id="restartRoundBtn2">Повторить раунд</button>
+                </div>
+            </div>
+            
+            <div class="instructions-2">
+                <p>Управляйте мышкой с помощью мыши. Старайтесь пройти тропинку как можно ближе к целевому времени.</p>
+            </div>
+        </div>
+
+        <div class="game-screen-3" id="gameScreen3" style="display: none;">
+    <div class="header">
+        <h1>Лягушка и кувшинка</h1>
+    </div>
+    
+    <div class="header-buttons">
+        <div class="player-info">Игрок: <span id="currentPlayerName3">-</span></div>
+        <button id="backToSelectionBtn3" class="back-btn">Выбор игры</button>
+        <button id="newGameHeaderBtn3" class="new-game-btn">Смена пользователя</button>
+        <button id="showLeadersBtn3">Таблица лидеров</button>
+    </div>
+    
+    <div class="level-info-3">
+        <div class="level-info-item">
+            Попытки: <span id="remainingAttempts">3/3</span>
+        </div>
+        <div class="level-info-item">
+            Очки: <span id="currentScore3">0</span>
+        </div>
+        <div class="level-info-item">
+            Уровень: 
+            <select id="levelSelect3">
+                <option value="1">Уровень 1</option>
+                <option value="2">Уровень 2</option>
+                <option value="3">Уровень 3</option>
+                <option value="4">Уровень 4</option>
+            </select>
+        </div>
+        <div class="level-info-item">
+            Сложность: 
+            <select id="difficultySelect3">
+                <option value="easy">Легкая</option>
+                <option value="medium">Средняя</option>
+                <option value="hard">Сложная</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="frog-game-container" id="frogGameContainer">
+        <div class="swamp">
+            <div class="lilypad current-lilypad" id="currentLilypad">
+                <div class="frog" id="frog"></div>
+            </div>
+            <div class="lilypad target-lilypad" id="targetLilypad"></div>
+            <div class="water"></div>
+        </div>
+    </div>
+    
+    <div class="timer-3" id="timer3">Нажмите на лягушку и удерживайте для прыжка</div>
+    
+    <div class="controls-3">
+        <button id="startGameBtn3">Начать игру</button>
+        <button id="restartGameBtn3" style="display: none;">Начать заново</button>
+    </div>
+    
+    <div class="result-3" id="result3">
+    <h2 id="resultTitle3">Результат</h2>
+    <p id="resultMessage3"></p>
+    <div class="result-buttons">
+        <button id="nextRoundBtn3" style="display: none;">Следующий уровень</button>
+        <button id="restartRoundBtn3">Повторить уровень</button>
+    </div>
+</div>
+    
+    <div class="instructions-3">
+        <p>За 3 попытки прыгните на кувшинку. Управляйте силой прыжка, удерживая нажатие на лягушке.</p>
+    </div>
+</div>
+        
+        <div class="leaders-screen" id="leadersScreen" style="display: none;">
+            <h2>Таблица лидеров</h2>
+            <div class="leaders-table" id="leadersTable">
+                <!-- динамическое заполнение таблицы лидеров -->
+            </div>
+            <div class="leaders-buttons">
+                <button id="backToGameBtn">Вернуться к игре</button>
+                <button id="newGameBtn">Смена пользователя</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="bulbs-game.js"></script>
+    <script src="mouse-game.js"></script>
+    <script src="frog-game.js"></script>
+</body>
+</html>
